@@ -1,4 +1,4 @@
-package com.sunqiang.bluetooth;
+package com.sunqiang.bluetooth.Ble;
 
 import java.util.UUID;
 

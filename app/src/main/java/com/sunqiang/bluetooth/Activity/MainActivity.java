@@ -1,36 +1,31 @@
-package com.sunqiang.bluetooth;
+package com.sunqiang.bluetooth.Activity;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothManager;
-import android.bluetooth.le.BluetoothLeScanner;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import static android.R.attr.data;
+import com.sunqiang.bluetooth.Adapter.CustomLinearManager;
+import com.sunqiang.bluetooth.Ble.BleWrapper;
+import com.sunqiang.bluetooth.Ble.BleWrapperUiCallbacks;
+import com.sunqiang.bluetooth.Adapter.DeviceListAdapter;
+import com.sunqiang.bluetooth.R;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btnScan;
     private RecyclerView listDevice;
+    private CustomLinearManager layoutManager;
 
     private static final long SCANNING_TIMEOUT = 5 * 1000; /* 5 seconds */
     private static final int ENABLE_BT_REQUEST_ID = 1;
@@ -50,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mDevicesListAdapter.clearList();
                 mDevicesListAdapter.notifyDataSetChanged();
+                for(BluetoothDevice device:mBleWrapper.getAdapter().getBondedDevices()){
+                    mDevicesListAdapter.addDevice(device,0,null);
+                    Log.i("BondedDevice",device.getName()+";MAC="+device.getAddress());
+                }
                 btnScan.setText("Scaning");
                 btnScan.setEnabled(false);
                 addScanningTimeout();
@@ -67,7 +66,26 @@ public class MainActivity extends AppCompatActivity {
         });
         listDevice= (RecyclerView) findViewById(R.id.list_device);
         mDevicesListAdapter = new DeviceListAdapter(this);
+        mDevicesListAdapter.setOnItemClickLitener(new DeviceListAdapter.OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent detail = new Intent(MainActivity.this,DetailActivity.class);
+                detail.putExtra(DetailActivity.EXTRAS_DEVICE_NAME,mDevicesListAdapter.getDevice(position).getName());
+                detail.putExtra(DetailActivity.EXTRAS_DEVICE_ADDRESS,mDevicesListAdapter.getDevice(position).getAddress());
+                detail.putExtra(DetailActivity.EXTRAS_DEVICE_RSSI,mDevicesListAdapter.getRssi(position));
+                startActivity(detail);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        });
+        listDevice.addItemDecoration(new DividerItemDecoration(MainActivity.this, LinearLayoutManager.VERTICAL));
         listDevice.setAdapter(mDevicesListAdapter);
+        layoutManager = new CustomLinearManager(this);
+        layoutManager.setScrollEnable(false);
+        listDevice.setLayoutManager(layoutManager);
         mBleWrapper = new BleWrapper(this,new BleWrapperUiCallbacks.Null(){
             @Override
             public void uiDeviceFound(BluetoothDevice device, int rssi, byte[] record) {
@@ -95,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
         // initialize BleWrapper object
         mBleWrapper.initialize();
+        getSupportActionBar().setSubtitle("MAC:"+mBleWrapper.getAdapter().getAddress());
     }
 
     /* check if user agreed to enable BT */

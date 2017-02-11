@@ -1,4 +1,4 @@
-package com.sunqiang.bluetooth;
+package com.sunqiang.bluetooth.Adapter;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.sunqiang.bluetooth.R;
 
 import java.util.ArrayList;
 
@@ -21,6 +23,12 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.De
     private ArrayList<byte[]> records;
     private LayoutInflater inflater;
 
+    private OnItemClickLitener mOnItemClickLitener;
+
+    public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener) {
+        this.mOnItemClickLitener = mOnItemClickLitener;
+    }
+
     public DeviceListAdapter(Context context) {
         devices = new ArrayList<>();
         rssis = new ArrayList<>();
@@ -29,11 +37,21 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.De
     }
 
     public void addDevice(BluetoothDevice device, int rssi, byte[] record) {
-        if (!devices.contains(device)) {
-            devices.add(device);
-            rssis.add(rssi);
-            records.add(record);
-        }
+//        if (!devices.contains(device)) {
+//            devices.add(device);
+//            rssis.add(rssi);
+//            records.add(record);
+//        }else {
+//            int pos=devices.indexOf(device);
+//            rssis.remove(pos);
+//            records.remove(pos);
+//            rssis.add(pos,rssi);
+//            records.add(pos,record);
+//        }
+
+        devices.add(device);
+        rssis.add(rssi);
+        records.add(record);
     }
 
     public BluetoothDevice getDevice(int index) {
@@ -52,17 +70,34 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.De
 
     @Override
     public DeviceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        DeviceViewHolder viewHolder = new DeviceViewHolder(inflater.inflate(R.layout.device_item, parent, false));
+        DeviceViewHolder viewHolder = new DeviceViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.device_item, parent, false));
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(DeviceViewHolder holder, int position) {
+    public void onBindViewHolder(final DeviceViewHolder holder, final int position) {
         String name = devices.get(position).getName();
         name = name == null ? "N/A" : name.equals("")?"N/A":name;
         holder.name.setText(name);
         holder.address.setText(devices.get(position).getAddress());
         holder.rssi.setText(rssis.get(position) + "");
+        if(mOnItemClickLitener!=null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = holder.getLayoutPosition();
+                    mOnItemClickLitener.onItemClick(v,pos);
+                }
+            });
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    int pos = holder.getLayoutPosition();
+                    mOnItemClickLitener.onItemLongClick(v,pos);
+                    return true;
+                }
+            });
+        }
     }
 
     @Override
@@ -80,5 +115,11 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.De
             address = (TextView) itemView.findViewById(R.id.device_address);
             rssi = (TextView) itemView.findViewById(R.id.device_rssi);
         }
+    }
+
+    public interface OnItemClickLitener
+    {
+        void onItemClick(View view, int position);
+        void onItemLongClick(View view , int position);
     }
 }

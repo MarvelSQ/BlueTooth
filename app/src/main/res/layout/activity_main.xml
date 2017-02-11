@@ -1,30 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    tools:context="com.sunqiang.bluetooth.MainActivity">
+    tools:context="com.sunqiang.bluetooth.Activity.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/status_none"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
 
     <Button
+        android:layout_alignParentBottom="true"
         android:id="@+id/btn_scan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="14dp"
+        android:background="@drawable/btn_bg"
+        android:textSize="16sp"
+        android:textColor="@color/colorWhite"
         android:text="scan"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/list_device"
-        android:layout_marginTop="10dp"
+    <ScrollView
+        android:visibility="gone"
+        android:id="@+id/status_normal"
+        android:background="@color/colorBackground"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="LinearLayoutManager">
+        android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_device"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:layoutManager="LinearLayoutManager"
+                >
 
-</LinearLayout>
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:layout_marginLeft="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="未认证设备"
+                android:gravity="center_vertical"
+                android:textColor="#c7c8cb"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_device_unknow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="LinearLayoutManager">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
