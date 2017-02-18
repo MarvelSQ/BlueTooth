@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.sunqiang.bluetooth.Ble.BleWrapper;
 import com.sunqiang.bluetooth.Ble.BleWrapperUiCallbacks;
+import com.sunqiang.bluetooth.BluetoothApplication;
 import com.sunqiang.bluetooth.R;
 import com.sunqiang.bluetooth.Adapter.ServiceListAdapter;
 
@@ -39,11 +40,12 @@ public class DetailActivity extends AppCompatActivity implements BleWrapperUiCal
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        BluetoothApplication.getViewManager().setContext(this);
         setContentView(R.layout.activity_detail);
         Intent i=getIntent();
         deviceName=i.getStringExtra(EXTRAS_DEVICE_NAME);
         deviceAddress=i.getStringExtra(EXTRAS_DEVICE_ADDRESS);
-        deviceRssi=i.getIntExtra(EXTRAS_DEVICE_RSSI,0)+"";
+        deviceRssi=i.getStringExtra(EXTRAS_DEVICE_RSSI)+"";
         getSupportActionBar().setSubtitle("MAC:"+deviceAddress);
         btnConnect= (Button) findViewById(R.id.btn_connect);
         btnConnect.setOnClickListener(new View.OnClickListener() {
@@ -177,5 +179,10 @@ public class DetailActivity extends AppCompatActivity implements BleWrapperUiCal
             intValue += (res[i] & 0xFF) << (8 * (3 - i));
         }
         return intValue;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
     }
 }

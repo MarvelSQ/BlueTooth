@@ -29,7 +29,7 @@ public class ServiceListAdapter extends RecyclerView.Adapter<ServiceListAdapter.
 
     private LayoutInflater inflater;
 
-    private DeviceListAdapter.OnItemClickLitener mOnItemClickLitener;
+    private DeviceListAdapter.OnItemClickListener mOnItemClickLitener;
 
     public ServiceListAdapter(Context context) {
         services = new ArrayList<>();

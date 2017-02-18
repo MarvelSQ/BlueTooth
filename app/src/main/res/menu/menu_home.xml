@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Activity.HomeActivity">
+    <item
+        android:id="@+id/device_list"
+        android:icon="@drawable/menu"
+        android:title="设备列表"
+        android:visible="true"
+        app:showAsAction="always"/>
+</menu>
