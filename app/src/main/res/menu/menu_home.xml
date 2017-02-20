@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Activity.HomeActivity">
+    tools:context="com.sunqiang.bluetooth.activity.HomeActivity">
     <item
         android:id="@+id/device_list"
         android:icon="@drawable/menu"

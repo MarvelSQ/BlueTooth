@@ -1,4 +1,4 @@
-package com.sunqiang.bluetooth.Adapter;
+package com.sunqiang.bluetooth.adapter;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.sunqiang.bluetooth.Ble.BleNamesResolver;
+import com.sunqiang.bluetooth.ble.BleNamesResolver;
 import com.sunqiang.bluetooth.R;
 
 import java.util.ArrayList;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.sunqiang.bluetooth.Activity.HomeActivity">
+    tools:context="com.sunqiang.bluetooth.com.sunqiang.bluetooth.activity.HomeActivity">
     
     <FrameLayout
         android:id="@+id/frame_home"

@@ -1,9 +1,6 @@
-package com.sunqiang.bluetooth.Adapter;
+package com.sunqiang.bluetooth.adapter;
 
 import android.bluetooth.BluetoothDevice;
-import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;

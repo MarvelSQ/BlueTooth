@@ -1,4 +1,4 @@
-package com.sunqiang.bluetooth.Ble;
+package com.sunqiang.bluetooth.ble;
 
 import android.util.SparseArray;
 

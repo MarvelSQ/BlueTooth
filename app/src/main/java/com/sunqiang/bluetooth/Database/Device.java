@@ -1,14 +1,6 @@
-package com.sunqiang.bluetooth.Database;
+package com.sunqiang.bluetooth.database;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
-
-import com.sunqiang.bluetooth.Activity.DetailActivity;
-import com.sunqiang.bluetooth.Activity.MainActivity;
-import com.sunqiang.bluetooth.BluetoothApplication;
 
 /**
  * Created by sunqiang on 2017/2/14.

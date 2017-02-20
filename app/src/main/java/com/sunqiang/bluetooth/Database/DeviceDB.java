@@ -1,4 +1,4 @@
-package com.sunqiang.bluetooth.Database;
+package com.sunqiang.bluetooth.database;
 
 import android.content.ContentValues;
 import android.content.Context;

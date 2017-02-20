@@ -1,6 +1,6 @@
 package com.sunqiang.bluetooth;
 
-import com.sunqiang.bluetooth.Database.Device;
+import com.sunqiang.bluetooth.database.Device;
 
 /**
  * Created by sunqiang on 2017/2/14.

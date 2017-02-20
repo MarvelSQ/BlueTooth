@@ -1,4 +1,4 @@
-package com.sunqiang.bluetooth.Fragment;
+package com.sunqiang.bluetooth.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -10,20 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.sunqiang.bluetooth.Adapter.BindingListAdapter;
-import com.sunqiang.bluetooth.Adapter.CustomLinearManager;
-import com.sunqiang.bluetooth.Database.Record;
+import com.sunqiang.bluetooth.adapter.BindingListAdapter;
+import com.sunqiang.bluetooth.adapter.CustomLinearManager;
+import com.sunqiang.bluetooth.database.Record;
 import com.sunqiang.bluetooth.R;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link HomeFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment{
 
     private View rootView;
     private RecyclerView lvRecord;

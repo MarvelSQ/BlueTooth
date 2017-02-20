@@ -1,10 +1,9 @@
-package com.sunqiang.bluetooth.Activity;
+package com.sunqiang.bluetooth.activity;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -17,13 +16,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.sunqiang.bluetooth.Adapter.BindingListAdapter;
-import com.sunqiang.bluetooth.Adapter.CustomLinearManager;
-import com.sunqiang.bluetooth.Ble.BleWrapper;
-import com.sunqiang.bluetooth.Ble.BleWrapperUiCallbacks;
+import com.sunqiang.bluetooth.adapter.BindingListAdapter;
+import com.sunqiang.bluetooth.adapter.CustomLinearManager;
+import com.sunqiang.bluetooth.ble.BleWrapper;
+import com.sunqiang.bluetooth.ble.BleWrapperUiCallbacks;
 import com.sunqiang.bluetooth.BluetoothApplication;
-import com.sunqiang.bluetooth.Database.Device;
-import com.sunqiang.bluetooth.Database.DeviceDB;
+import com.sunqiang.bluetooth.database.Device;
+import com.sunqiang.bluetooth.database.DeviceDB;
 import com.sunqiang.bluetooth.R;
 
 import java.util.ArrayList;

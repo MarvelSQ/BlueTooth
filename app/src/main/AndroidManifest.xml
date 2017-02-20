@@ -19,15 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:label="设备列表"
             android:theme="@style/NoActionBar"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.DetailActivity"
+            android:name=".activity.DetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.HomeActivity"
+            android:name=".activity.HomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

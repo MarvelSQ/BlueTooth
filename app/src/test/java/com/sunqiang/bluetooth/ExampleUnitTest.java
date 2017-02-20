@@ -1,7 +1,6 @@
 package com.sunqiang.bluetooth;
 
-import com.sunqiang.bluetooth.Database.Device;
-import com.sunqiang.bluetooth.Database.DeviceDB;
+import com.sunqiang.bluetooth.database.Device;
 
 import org.junit.Test;
 
@@ -64,5 +63,16 @@ public class ExampleUnitTest {
         fullDevice.setName("ahah");
         fullDevice.getDevice().setName("xxxx");
         fullDevice2.getName();
+    }
+
+    public class _____{
+        int __ = 2;
+        private int ___ = 3;
+
+        void _____(){
+            for(int _ = 0;_<__;_++){
+                System.out.print(String.valueOf(__+_));
+            }
+        }
     }
 }

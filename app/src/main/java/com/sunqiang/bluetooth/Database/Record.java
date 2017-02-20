@@ -1,4 +1,4 @@
-package com.sunqiang.bluetooth.Database;
+package com.sunqiang.bluetooth.database;
 
 import java.io.File;
 import java.security.Timestamp;
@@ -20,6 +20,13 @@ public class Record {
     private int score;// int,
     private File file;// blob
     private Callback callback;
+    public enum Pose{
+        STANDING(""),SITTING(""),SIEDLIE("");
+
+        private Pose(String hah){
+
+        }
+    }
 
     public String getId() {
         return id;
@@ -102,6 +109,32 @@ public class Record {
     }
 
     public interface Callback{
+        void gotoview();
+    }
 
+    @Override
+    public String toString() {
+        return "Record{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", pose=" + pose +
+                ", position=" + position +
+                ", recordTime=" + recordTime +
+                ", result='" + result + '\'' +
+                ", mark='" + mark + '\'' +
+                ", advise='" + advise + '\'' +
+                ", score=" + score +
+                ", file=" + file +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

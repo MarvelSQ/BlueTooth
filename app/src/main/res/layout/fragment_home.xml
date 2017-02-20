@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sunqiang.bluetooth.Fragment.HomeFragment">
+    tools:context="com.sunqiang.bluetooth.com.sunqiang.bluetooth.fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -32,6 +32,14 @@
                         android:text="位置"
                         android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/home_position"
+                        android:spinnerMode="dialog"
+                        android:layoutMode="opticalBounds">
+
+                    </android.support.v7.widget.AppCompatSpinner>
                 </LinearLayout>
 
                 <View

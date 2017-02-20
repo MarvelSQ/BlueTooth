@@ -2,9 +2,8 @@ package com.sunqiang.bluetooth;
 
 import android.app.Application;
 import android.content.Context;
-import android.view.ViewManager;
 
-import com.sunqiang.bluetooth.Activity.MainActivity;
+import com.sunqiang.bluetooth.activity.ViewManager;
 
 /**
  * Created by sunqiang on 2017/2/14.
@@ -13,7 +12,7 @@ import com.sunqiang.bluetooth.Activity.MainActivity;
 public class BluetoothApplication extends Application {
 
     private static Context mContext;
-    private static com.sunqiang.bluetooth.Activity.ViewManager viewManager;
+    private static ViewManager viewManager;
 
     @Override
     public void onCreate() {
@@ -21,9 +20,9 @@ public class BluetoothApplication extends Application {
         mContext = this;
     }
 
-    public static com.sunqiang.bluetooth.Activity.ViewManager getViewManager(){
+    public static ViewManager getViewManager(){
         if(viewManager==null){
-            viewManager = new com.sunqiang.bluetooth.Activity.ViewManager(mContext);
+            viewManager = new ViewManager(mContext);
         }
         return viewManager;
     }

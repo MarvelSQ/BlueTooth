@@ -1,4 +1,4 @@
-package com.sunqiang.bluetooth.Adapter;
+package com.sunqiang.bluetooth.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;

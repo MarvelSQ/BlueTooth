@@ -1,4 +1,4 @@
-package com.sunqiang.bluetooth.Activity;
+package com.sunqiang.bluetooth.activity;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -12,11 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.sunqiang.bluetooth.Ble.BleWrapper;
-import com.sunqiang.bluetooth.Ble.BleWrapperUiCallbacks;
+import com.sunqiang.bluetooth.ble.BleWrapper;
+import com.sunqiang.bluetooth.ble.BleWrapperUiCallbacks;
 import com.sunqiang.bluetooth.BluetoothApplication;
 import com.sunqiang.bluetooth.R;
-import com.sunqiang.bluetooth.Adapter.ServiceListAdapter;
+import com.sunqiang.bluetooth.adapter.ServiceListAdapter;
 
 import java.util.List;
 import java.util.Locale;
